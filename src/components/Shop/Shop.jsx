@@ -19,7 +19,15 @@ const Shop = () =>
     useEffect( () =>
     {
         const data = getShoppingCart()
-        console.log(data)
+        // console.log( data, typeof data )
+        for (const id in data )
+        {
+            // console.log(i, typeof i)
+            const findProducts = products.find( ( product ) => product.id === id )
+            const quantity = data[id] 
+            findProducts.quantity = quantity;
+            console.log( findProducts );
+        }
     })
 
     const handleAddToCart = ( product ) =>
