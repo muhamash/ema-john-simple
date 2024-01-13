@@ -6,52 +6,55 @@ import { addToDb, getShoppingCart } from '../../utilities/fakedb';
 
 const Shop = () =>
 {
-    const [ products, setProducts ] = useState( [] );
-    const [ cart, setCart ] = useState( [] )
+    const [ shopState, setShopState ] = useState( {
+        products: [],
+        cart: [],
+    } );
 
+    console.log(shopState)
     useEffect( () =>
     {
         fetch( 'products.json' )
             .then( res => res.json() )
-            .then( data => setProducts( data ) )
+            .then( data => setShopState( prevState => ( { ...prevState, products: data } ) ) );
     }, [] );
 
     useEffect( () =>
     {
-        const data = getShoppingCart()
-        // console.log( data, typeof data )
-        for (const id in data )
+        const data = getShoppingCart();
+        const quantityArray = Object.keys( data ).map( id =>
         {
-            // console.log(i, typeof i)
-            const findProducts = products.find( ( product ) => product.id === id )
-            const quantity = data[id] 
-            findProducts.quantity = quantity;
-            console.log( findProducts );
-        }
-    })
+            const product = shopState.products.find( p => p.id === id );
+            console.log(product)
+            return product ? { ...product, quantity: data[ id ] } : null;
+        } ).filter( Boolean );
+        
+        setShopState( prevState => ( { ...prevState, cart: quantityArray } ) );
+        console.log( setShopState )
+        console.log(shopState)
+
+    }, [ shopState.products ] );
 
     const handleAddToCart = ( product ) =>
     {
-        // cart.push(product); 
-        const newCart = [ ...cart, product ];
-        // console.log(newCart)
-        setCart( newCart );
-        addToDb(product.id)
-    }
+        const newCart = [ ...shopState.cart, product ];
+        setShopState( prevState => ( { ...prevState, cart: newCart } ) );
+        addToDb( product.id );
+    };
 
     return (
         <div className='shop-container'>
             <div className="products-container">
-                {
-                    products.map( product => <Product
+                { shopState.products.map( product => (
+                    <Product
                         key={ product.id }
                         product={ product }
                         handleAddToCart={ handleAddToCart }
-                    ></Product> )
-                }
+                    />
+                ) ) }
             </div>
             <div className="">
-                <Cart cart={cart}/>
+                <Cart cart={ shopState.cart } />
             </div>
         </div>
     );
