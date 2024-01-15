@@ -43,7 +43,7 @@ const Cart = ( { cart } ) =>
                 <p className='px-3'>Total Price: { totalPrice }</p>
                 <p className='px-3'>Total Shipping: { totalShipping }</p>
                 <p className='px-3'>Tax: { totalTax.toFixed( 2 ) }</p>
-                <p className='py-2 text-sm font-bold px-3 bg-cyan-600'>Grand Total: { grandTotal }</p>
+                <p className='py-2 text-sm font-bold px-3 bg-cyan-600'>Grand Total: { grandTotal.toFixed(2) }</p>
             </div>
         </div>
     );

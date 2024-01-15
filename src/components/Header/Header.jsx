@@ -1,19 +1,21 @@
+// Header.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/Logo.svg';
 
 const Header = () => {
-    return (
-        <nav className='header'>
-            <img src={logo} alt="" />
-            <div>
-                <a href="/shop">Shop</a>
-                <a href="/order">Orders</a>
-                <a href="/inventory">Inventory</a>
-                <a href="/login">Login</a>
-            </div>
-        </nav>
-    );
+  return (
+    <nav className='header'>
+      <img src={logo} alt="" />
+      <div>
+        <Link to="/shop">Shop</Link>
+        <Link to="/order">Orders</Link>
+        <Link to="/inventory">Inventory</Link>
+        <Link to="/login">Login</Link>
+      </div>
+    </nav>
+  );
 };
 
 export default Header;
