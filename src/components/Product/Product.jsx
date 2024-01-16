@@ -13,17 +13,21 @@ const Product = ( props ) =>
 
     return (
         <div className='product'>
-            <img src={ img } alt="" />
-            <div className='product-info'>
-                <h6 className='product-name'>{ name }</h6>
-                <p>Price: ${ price }</p>
-                <p>Manufacturer: { seller }</p>
-                <p>Rating: { ratings } Stars</p>
+            <div>
+                <img src={ img } alt="" />
+                <div className='product-info'>
+                    <h6 className='text-orange-600'>{ name }</h6>
+                    <p>Price: ${ price }</p>
+                    <p>Manufacturer: { seller }</p>
+                    <p>Rating: { ratings } Stars</p>
+                </div>
             </div>
-            <button onClick={ () => handleAddToCart( props.product ) } className='btn-cart'>
-                Add to Cart
-                <FontAwesomeIcon icon={ faShoppingCart } />
-            </button>
+            <div className='py-3 flex justify-center'>
+                <button onClick={ () => handleAddToCart( props.product ) } className=' flex items-center gap-3 justify-center'>
+                    Add to Cart
+                    <FontAwesomeIcon icon={ faShoppingCart } />
+                </button>
+            </div>
         </div>
     );
 };

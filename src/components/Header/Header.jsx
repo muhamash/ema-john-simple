@@ -13,6 +13,8 @@ const Header = () => {
         <Link to="/order">Orders</Link>
         <Link to="/inventory">Inventory</Link>
         <Link to="/login">Login</Link>
+        {/* <a className='cursor-pointer text-lg' href='/order'>Order</a>
+        <a className='cursor-pointer text-lg' href='/shop'></a> */}
       </div>
     </nav>
   );

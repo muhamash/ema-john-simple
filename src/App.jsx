@@ -8,9 +8,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App p-[300px] text-2xl">
+    <div className="">
       <Header></Header>
       this is home
+    <Shop/>
       {/* <Outlet></Outlet> */}
     </div>
   )
