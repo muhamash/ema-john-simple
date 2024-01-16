@@ -1,13 +1,19 @@
 // Header.js
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Header.css';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
 
-const Header = () => {
+const Header = () =>
+{
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+  }
   return (
     <nav className='header'>
-      <img src={logo} alt="" />
+      <img className='cursor-pointer' src={logo} alt="" onClick={handleLogoClick}/>
       <div>
         <Link to="/shop">Shop</Link>
         <Link to="/order">Orders</Link>
