@@ -18,7 +18,7 @@ const OrderLoader = async () =>
         }
     }
 
-    console.log(StoredCart[0].quantity)
+    // console.log(StoredCart)
     return StoredCart;
 }
 

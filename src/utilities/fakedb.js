@@ -21,6 +21,8 @@ const removeFromDb = id => {
     }
 }
 
+
+
 const getShoppingCart = () => {
     let shoppingCart = {};
 
