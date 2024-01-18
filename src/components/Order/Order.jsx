@@ -2,34 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Cart from '../Cart/cart';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import DeleteItem from './DeleteItem';
 
 const Order = () => {
     const initialProducts = useLoaderData();
     const [cart, setCart] = useState(initialProducts);
 
     const deleteCartItem = (productId) => {
-        // Remove the specific item from the cart
         const updatedCart = cart.filter(item => item.id !== productId);
-        removeFromDb(productId); // Assuming removeFromDb is responsible for removing the item from the database
+        removeFromDb(productId);
         setCart(updatedCart);
     };
 
-    const deleteEachItem = () => {
-        // Delete each item in the cart individually
-        cart.forEach(item => {
-            removeFromDb(item.id);
-        });
+    const deleteEachItem = (productId) => {
+        removeFromDb(productId);
+        const updatedCart = cart.filter(item => item.id !== productId);
+        setCart(updatedCart);
+    };
+
+    const deleteCart = () => {
+        deleteShoppingCart();
         setCart([]);
     };
 
-    const deleteCart = () =>
-    {
-        deleteShoppingCart()
-        setCart([])
-    }
-
     useEffect(() => {
-        // Update local state when the data changes
         setCart(initialProducts);
     }, [initialProducts]);
 
@@ -40,18 +36,20 @@ const Order = () => {
             </div>
             <div className='cart-container w-[300px]'>
                 <Cart cart={cart} deleteCartItem={deleteCartItem} />
-                {/* Pass deleteCartItem function to the Cart component */}
             </div>
             <div className='flex flex-col gap-5 justify-center items-center'>
-                <div
-                    onClick={deleteEachItem}
-                    className='bg-pink-600 px-2 py-4 text-white rounded-md cursor-pointer'
-                >
-                    Delete each item
-                </div>
+                {cart.map(item => (
+                    <div
+                        key={item.id}
+                        onClick={() => deleteEachItem(item.id)}
+                        className='bg-cyan-700 px-3 py-4 text-white rounded-md cursor-pointer w-[400px]'
+                    >
+                        <DeleteItem name={item.name}/>
+                    </div>
+                ))}
                 <div
                     onClick={deleteCart}
-                    className='bg-red-700 cursor-pointer text-white px-2 py-4 rounded-md'
+                    className='bg-rose-700 cursor-pointer text-white px-3 py-4 rounded-md'
                 >
                     Delete Cart
                 </div>

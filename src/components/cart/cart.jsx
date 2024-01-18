@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Cart = ( { cart } ) =>
 {
+    console.log(cart, typeof cart)
     const [ details, setDetails ] = useState( {
         totalPrice: 0,
         totalShipping: 0,
