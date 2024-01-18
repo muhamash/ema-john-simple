@@ -10,9 +10,9 @@ const Product = (props) => {
   const handleAddToCart = props.handleAddToCart;
 
   const notify = () => {
-    toast.success(`${name} added to the cart!`, {
+    toast.success(`${name} 🦄 added to the cart!`, {
       position: 'top-right',
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
