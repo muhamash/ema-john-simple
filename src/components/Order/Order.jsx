@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Cart from '../Cart/cart';
+import Cart from '../Cart/Cart';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import DeleteItem from './DeleteItem';
+import { ToastContainer } from 'react-toastify';
 
 const Order = () => {
     const initialProducts = useLoaderData();
@@ -46,7 +47,8 @@ const Order = () => {
                     >
                         <DeleteItem name={item.name}/>
                     </div>
-                ))}
+                ) ) }
+                <ToastContainer />
                 <div
                     onClick={deleteCart}
                     className='bg-rose-700 cursor-pointer text-white px-3 py-4 rounded-md'
