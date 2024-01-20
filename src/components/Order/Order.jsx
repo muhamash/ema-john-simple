@@ -9,11 +9,11 @@ const Order = () => {
     const initialProducts = useLoaderData();
     const [cart, setCart] = useState(initialProducts);
 
-    const deleteCartItem = (productId) => {
-        const updatedCart = cart.filter(item => item.id !== productId);
-        removeFromDb(productId);
-        setCart(updatedCart);
-    };
+    // const deleteCartItem = (productId) => {
+    //     const updatedCart = cart.filter(item => item.id !== productId);
+    //     removeFromDb(productId);
+    //     setCart(updatedCart);
+    // };
 
     const deleteEachItem = (productId) => {
         removeFromDb(productId);
@@ -36,7 +36,7 @@ const Order = () => {
                 Cart: {cart.length}
             </div>
             <div className='cart-container w-[300px]'>
-                <Cart cart={cart} deleteCartItem={deleteCartItem} />
+                <Cart cart={cart} deleteCartItem={deleteEachItem} />
             </div>
             <div className='flex flex-col gap-5 justify-center items-center'>
                 {cart.map(item => (
