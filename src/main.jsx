@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
-import App from './App';
+// import App from './App';
+import Login from './components/Login/Login'
 import Shop from './components/Shop/Shop';
 import Order from './components/Order/Order';
 import OrderLoader from './components/Shop/OrderLoader';
@@ -21,6 +22,11 @@ const router = createBrowserRouter( [
       {
         path: 'order',
         element: <Order />,
+        loader: OrderLoader,
+      },
+      {
+        path: 'login',
+        element: <Login />,
         loader: OrderLoader,
       },
     ],
