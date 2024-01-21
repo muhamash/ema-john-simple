@@ -12,12 +12,17 @@ const Header = () =>
     navigate('/');
   }
   return (
-    <nav className='header'>
-      <img className='cursor-pointer' src={logo} alt="" onClick={handleLogoClick}/>
+    <nav
+      className='header'>
+      <img
+        className='cursor-pointer'
+        src={ logo }
+        alt=""
+        onClick={ handleLogoClick } />
       <div>
         <Link to="/shop">Shop</Link>
         <Link to="/order">Orders</Link>
-        <Link to="/inventory">Inventory</Link>
+        <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
         {/* <a className='cursor-pointer text-lg' href='/order'>Order</a>
         <a className='cursor-pointer text-lg' href='/shop'></a> */}

@@ -8,6 +8,7 @@ import Order from './components/Order/Order';
 import OrderLoader from './components/Shop/OrderLoader';
 import Home from "./components/Home/Home";
 import "./index.css"
+import Register from './components/Register/Register'
 
 
 const router = createBrowserRouter( [
@@ -27,6 +28,11 @@ const router = createBrowserRouter( [
       {
         path: 'login',
         element: <Login />,
+        loader: OrderLoader,
+      },
+      {
+        path: 'register',
+        element: <Register />,
         loader: OrderLoader,
       },
     ],
